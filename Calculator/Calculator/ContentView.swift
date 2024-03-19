@@ -54,6 +54,17 @@ enum ButtonType: String {
                return "C"
         }
     }
+    
+    var backgroundColor: Color {
+        switch self {
+        case .first, .second, .third, .fourth, .fifth, .sixth, .seventh, .eighth, .nineth, .zero, .comma:
+            return Color("NumberButton")
+        case .equal, .plus, .minus, .multiply, .divide:
+            return Color.orange
+        case .percent, .opposite, .clear:
+            return Color.gray
+        }
+    }
 }
 struct ContentView: View {
     
@@ -97,7 +108,7 @@ struct ContentView: View {
                                 Text(item.buttonDisplayName)
                                     .frame(width: 80,
                                            height: 80)
-                                    .background(Color.gray)
+                                    .background(item.backgroundColor)
                                     .cornerRadius(40)
                                     .foregroundColor(.white)
                                     .font(.system(size: 33))
